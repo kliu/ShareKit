@@ -83,15 +83,21 @@
 		}
 	};
 
-	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-		UIView *view = [SHK currentHelper].rootViewForCustomUIDisplay.view;
-		CGSize viewSize = view.bounds.size;
-		CGRect fromRect = CGRectMake(viewSize.width/2, viewSize.height/2,
-									 viewSize.width, viewSize.height);
-		[printer presentFromRect:fromRect inView:view animated:YES completionHandler:completionHandler];
-	} else {
-		[printer presentAnimated:YES completionHandler:completionHandler];
-	}
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    UIView *view = [SHK currentHelper].rootViewForCustomUIDisplay.view;
+    CGRect fromRect;
+    if (item.sender) {
+      fromRect = [item.sender frame];
+    }
+    else {
+      CGSize viewSize = view.bounds.size;
+      fromRect = CGRectMake(viewSize.width/2, viewSize.height/2,
+                            viewSize.width, viewSize.height);
+    }
+    [printer presentFromRect:fromRect inView:view animated:YES completionHandler:completionHandler];
+  } else {
+    [printer presentAnimated:YES completionHandler:completionHandler];
+  }
 	return YES;
 }
 

@@ -212,5 +212,17 @@
 	[self autorelease];
 }
 
+- (BOOL)validateItem
+{
+  if (item.shareType == SHKShareTypeMail)
+  {
+    return YES;
+  }
+  else
+  {
+    return [super validateItem];
+  }
+}
+
 
 @end

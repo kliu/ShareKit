@@ -128,8 +128,7 @@
 			NSString *urlStr = [item.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 			
 			if (body != nil)
-				body = [body stringByAppendingFormat:@"<br/><br/>%@", urlStr];
-			
+        body = [body stringByAppendingFormat:@"%@", urlStr];
 			else
 				body = urlStr;
 		}

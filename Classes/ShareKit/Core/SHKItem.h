@@ -34,6 +34,8 @@ typedef enum
 	SHKShareTypeText,
 	SHKShareTypeImage,
 	SHKShareTypeFile,
+  SHKShareTypeAppRequest,
+  SHKShareTypeMail,   
     SHKShareTypeUserInfo
 } SHKShareType;
 
@@ -65,7 +67,7 @@ typedef enum
 	@private
 		NSMutableDictionary *custom;
 }
-
+@property (nonatomic, assign)     id sender;
 @property (nonatomic)			SHKShareType shareType;
 
 @property (nonatomic, retain)	NSURL *URL;

@@ -41,6 +41,7 @@
 
 @implementation SHKItem
 
+@synthesize sender;
 @synthesize shareType;
 @synthesize URL, URLContentType, image, title, text, tags, data, mimeType, filename;
 @synthesize custom;

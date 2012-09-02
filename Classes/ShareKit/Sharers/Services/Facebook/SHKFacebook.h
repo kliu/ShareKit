@@ -32,6 +32,13 @@
 
 @interface SHKFacebook : SHKSharer <FBSessionDelegate, FBDialogDelegate, FBRequestDelegate, SHKFormControllerLargeTextFieldDelegate>
 
+{
+  id<FBSessionDelegate> _sessionDelegate;    
+}
+
+@property(nonatomic, assign) id<FBSessionDelegate> sessionCallbackDelegate;
++ (Facebook*)facebook;
 + (BOOL)handleOpenURL:(NSURL*)url;
++ (BOOL)handleOpenURL:(NSURL*)url withDelegate:(id <FBSessionDelegate>)delegate;
 
 @end
