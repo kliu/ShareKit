@@ -94,7 +94,8 @@
       fromRect = CGRectMake(viewSize.width/2, viewSize.height/2,
                             viewSize.width, viewSize.height);
     }
-    [printer presentFromRect:fromRect inView:view animated:YES completionHandler:completionHandler];
+    [printer presentFromRect:fromRect inView:[item.sender superview] animated:YES completionHandler:completionHandler];
+    //[printer presentFromRect:[view convertRect:fromRect fromView:(UIView*)item.sender] inView:view animated:YES completionHandler:completionHandler];
   } else {
     [printer presentAnimated:YES completionHandler:completionHandler];
   }
