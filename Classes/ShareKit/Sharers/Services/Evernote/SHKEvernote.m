@@ -81,7 +81,8 @@
                                    otherButtonTitles:nil] autorelease] show];
             
         } else if (session.isAuthenticated && self.item) {
-            [self tryPendingAction];
+          [self performSelector:@selector(tryPendingAction) withObject:nil afterDelay:1];
+          //[self tryPendingAction];
         } 
     }];
 }
