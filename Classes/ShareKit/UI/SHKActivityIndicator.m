@@ -139,7 +139,8 @@ static SHKActivityIndicator *_currentIndicator = nil;
 }
 
 - (void)displayActivity:(NSString *)m
-{		
+{
+  [self setProperRotation:NO];
 	[self setSubMessage:m];
 	[self showSpinner];	
 	
@@ -153,7 +154,8 @@ static SHKActivityIndicator *_currentIndicator = nil;
 }
 
 - (void)displayCompleted:(NSString *)m
-{	
+{
+  [self setProperRotation:NO];
 	[self setCenterMessage:@"✓"];
 	[self setSubMessage:m];
 	
