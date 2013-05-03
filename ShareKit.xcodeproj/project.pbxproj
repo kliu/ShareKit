@@ -60,20 +60,6 @@
 		7A0F91FC156BA2A0009CB40A /* SHKTextMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4379F3B11291C45700D2A41E /* SHKTextMessage.m */; };
 		7A0F91FD156BA2A0009CB40A /* DefaultSHKConfigurator.m in Sources */ = {isa = PBXBuildFile; fileRef = AAACE01613CCB1F500A2118F /* DefaultSHKConfigurator.m */; };
 		7A0F91FE156BA2A0009CB40A /* SHKConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = AAACE01A13CCB1F500A2118F /* SHKConfiguration.m */; };
-		7A0F9203156BA2A0009CB40A /* (null) in Sources */ = {isa = PBXBuildFile; };
-		7A0F9204156BA2A0009CB40A /* (null) in Sources */ = {isa = PBXBuildFile; };
-		7A0F9205156BA2A0009CB40A /* (null) in Sources */ = {isa = PBXBuildFile; };
-		7A0F9206156BA2A0009CB40A /* (null) in Sources */ = {isa = PBXBuildFile; };
-		7A0F9207156BA2A0009CB40A /* (null) in Sources */ = {isa = PBXBuildFile; };
-		7A0F9208156BA2A0009CB40A /* (null) in Sources */ = {isa = PBXBuildFile; };
-		7A0F9209156BA2A0009CB40A /* (null) in Sources */ = {isa = PBXBuildFile; };
-		7A0F920A156BA2A0009CB40A /* (null) in Sources */ = {isa = PBXBuildFile; };
-		7A0F920B156BA2A0009CB40A /* (null) in Sources */ = {isa = PBXBuildFile; };
-		7A0F920C156BA2A0009CB40A /* (null) in Sources */ = {isa = PBXBuildFile; };
-		7A0F920D156BA2A0009CB40A /* (null) in Sources */ = {isa = PBXBuildFile; };
-		7A0F920E156BA2A0009CB40A /* (null) in Sources */ = {isa = PBXBuildFile; };
-		7A0F920F156BA2A0009CB40A /* (null) in Sources */ = {isa = PBXBuildFile; };
-		7A0F9210156BA2A0009CB40A /* (null) in Sources */ = {isa = PBXBuildFile; };
 		7A0F9211156BA2A0009CB40A /* SHKEvernote.m in Sources */ = {isa = PBXBuildFile; fileRef = 4379F2B11291AC9700D2A41E /* SHKEvernote.m */; };
 		7A0F921C156BA2A0009CB40A /* SHKFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A536DD11DBE3B9004A1712 /* SHKFacebook.m */; };
 		7A0F922A156BA2A0009CB40A /* SHKFlickr.m in Sources */ = {isa = PBXBuildFile; fileRef = AAACE06113CCBED400A2118F /* SHKFlickr.m */; };
@@ -1456,20 +1442,6 @@
 				7A0F91FC156BA2A0009CB40A /* SHKTextMessage.m in Sources */,
 				7A0F91FD156BA2A0009CB40A /* DefaultSHKConfigurator.m in Sources */,
 				7A0F91FE156BA2A0009CB40A /* SHKConfiguration.m in Sources */,
-				7A0F9203156BA2A0009CB40A /* (null) in Sources */,
-				7A0F9204156BA2A0009CB40A /* (null) in Sources */,
-				7A0F9205156BA2A0009CB40A /* (null) in Sources */,
-				7A0F9206156BA2A0009CB40A /* (null) in Sources */,
-				7A0F9207156BA2A0009CB40A /* (null) in Sources */,
-				7A0F9208156BA2A0009CB40A /* (null) in Sources */,
-				7A0F9209156BA2A0009CB40A /* (null) in Sources */,
-				7A0F920A156BA2A0009CB40A /* (null) in Sources */,
-				7A0F920B156BA2A0009CB40A /* (null) in Sources */,
-				7A0F920C156BA2A0009CB40A /* (null) in Sources */,
-				7A0F920D156BA2A0009CB40A /* (null) in Sources */,
-				7A0F920E156BA2A0009CB40A /* (null) in Sources */,
-				7A0F920F156BA2A0009CB40A /* (null) in Sources */,
-				7A0F9210156BA2A0009CB40A /* (null) in Sources */,
 				7A0F9211156BA2A0009CB40A /* SHKEvernote.m in Sources */,
 				7A0F921C156BA2A0009CB40A /* SHKFacebook.m in Sources */,
 				7A0F922A156BA2A0009CB40A /* SHKFlickr.m in Sources */,
