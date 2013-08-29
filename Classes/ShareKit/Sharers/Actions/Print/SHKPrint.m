@@ -25,7 +25,7 @@
 
 + (BOOL)canShareFile
 {
-	return NO;
+	return YES;
 }
 
 + (BOOL)shareRequiresInternetConnection
@@ -70,8 +70,8 @@
 	UIPrintInfo *info = [UIPrintInfo printInfo];
     info.outputType = self.item.printOutputType;
     printer.printInfo = info;
-	printer.showsPageRange = NO;
-	printer.printingItem = item.image;
+	printer.showsPageRange =item.image == nil ? YES : NO;
+	printer.printingItem = item.image == nil ? item.data : item.image;
 	UIPrintInteractionCompletionHandler completionHandler = ^(UIPrintInteractionController *printer,
 															  BOOL completed, NSError *error) {
 		[[SHK currentHelper] hideCurrentViewControllerAnimated:YES];
