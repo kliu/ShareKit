@@ -144,8 +144,8 @@
     }
     
     note.title = item.title.length > 0 ? item.title :( [note titleIsSet] ? note.title : SHKLocalizedString(@"Untitled") );
-    
-    if(![note tagNamesIsSet]&&item.tags)
+  
+    if(![note tagNamesIsSet]&&item.tags && [[item.tags stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] > 0)
     	[note setTagNames:[item.tags componentsSeparatedByString:@" "]];
     
     if(![note contentIsSet]) {
