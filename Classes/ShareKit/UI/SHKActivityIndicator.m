@@ -76,12 +76,14 @@
 		result.userInteractionEnabled = NO;
 		result.autoresizesSubviews = YES;
 		result.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |  UIViewAutoresizingFlexibleTopMargin |  UIViewAutoresizingFlexibleBottomMargin;
+    if (![[NSProcessInfo processInfo] respondsToSelector:@selector(isOperatingSystemAtLeastVersion:)]) {
 		[result setProperRotation:NO];
 		
 		[[NSNotificationCenter defaultCenter] addObserver:result
 												 selector:@selector(setProperRotation)
 													 name:UIDeviceOrientationDidChangeNotification
 												   object:nil];
+    }
         return result;
     });
 }
