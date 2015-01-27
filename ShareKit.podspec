@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name          = 'ShareKit'
-  s.version       = '3.0.0'
+  s.version       = '4.0.1'
   s.platform      = :ios, '6.0'
   s.summary       = 'Drop in sharing features for all iPhone and iPad apps.'
   s.homepage      = 'http://getsharekit.com/'
@@ -12,26 +12,18 @@ Pod::Spec.new do |s|
                                %Q|The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n| +
                                %Q|THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE| }
   
-  non_arc_files = 'Classes/ShareKit/Core/Helpers/OAuth/**/*.{h,m}', 'Classes/ShareKit/Core/Categories/GTMNSString+HTML.{h,m}', 'Classes/ShareKit/Core/Helpers/Debug.h'
-
   s.subspec 'Core' do |core|
     core.resource_bundle = {'ShareKit' => ['Classes/ShareKit/Core/SHKSharers.plist', 'Classes/ShareKit/Localization/*.lproj', 'Classes/ShareKit/*.png']}
-    core.source_files  = 'Classes/ShareKit/{Configuration,Core,UI}/**/*.{h,m,c}', 'Classes/ShareKit/Sharers/Actions/**/*.{h,m,c}'
-    core.exclude_files = non_arc_files
-    core.frameworks    = 'SystemConfiguration', 'Security', 'MessageUI', "AVFoundation", "MobileCoreServices", "CoreMedia", "Social"
+    core.source_files  = 'Classes/ShareKit/{Configuration,Core,UI}/**/*.{h,m,c}', 'Classes/ShareKit/Sharers/Actions/**/*.{h,m,c}', 'Classes/ShareKit/Core NoARC/**/*.{h,m,c}'
+    core.requires_arc = 'Classes/ShareKit/{Configuration,Core,UI}/**/*.{h,m,c}', 'Classes/ShareKit/Sharers/Actions/**/*.{h,m,c}'
+    core.frameworks    = 'SystemConfiguration', 'Security', 'MessageUI', 'AVFoundation', 'MobileCoreServices', 'CoreMedia', 'Social'
+    core.weak_frameworks = 'SafariServices' #for Add to Safari reading list
     core.dependency 'SSKeychain', '~> 1.2.2'
     core.dependency 'SAMTextView', '~> 0.2.1'
     core.dependency 'ShareKit/Reachability'
-    core.dependency 'ShareKit/NoARC'
-    core.dependency 'SDWebImage', '~> 3.7.1'
+    core.dependency 'SDWebImage', '~> 3.7'
+    core.dependency 'PKMultipartInputStream'
     core.dependency 'UIActivityIndicator-for-SDWebImage', '~> 1.2'
-  end
-
-  s.subspec 'NoARC' do |noarc|
-    noarc.dependency 'PKMultipartInputStream'
-    noarc.requires_arc = false
-    noarc.source_files = non_arc_files
-    noarc.dependency 'ShareKit/Core'
   end
 
   s.subspec 'Reachability' do |reachability|
@@ -165,33 +157,39 @@ Pod::Spec.new do |s|
     pinterest.dependency 'ShareKit/Core'
   end
 
-  s.subspec 'OneNote' do |onenote|
-    onenote.source_files = 'Classes/ShareKit/Sharers/Services/OneNote/**/*.{h,m}'
-    onenote.dependency 'ShareKit/Core'
-    onenote.vendored_frameworks = 'Frameworks/LiveSDK.framework'
-    onenote.resource = 'Frameworks/LiveSDK.framework'
-  end
 
-  s.subspec 'ReadingList' do |readinglist|
-    readinglist.source_files = 'Classes/ShareKit/Sharers/Actions/Add to Safari Reading List/**/*.{h,m}'
-    readinglist.dependency 'ShareKit/Core'
-    readinglist.weak_frameworks    = 'SafariServices'
-  end
+### one note subspec removed because https://github.com/GeLoInc/GeLoSDK-iOS/issues/2
 
-  s.subspec 'Open in Google Chrome' do |openinchrome|
-    openinchrome.source_files = 'Classes/ShareKit/Sharers/Actions/Open in Chrome/**/*.{h,m}'
-    openinchrome.dependency 'ShareKit/Core'
-  end
+#  s.subspec 'OneNote' do |onenote|
+#   onenote.source_files = 'Classes/ShareKit/Sharers/Services/OneNote/**/*.{h,m}'
+#   onenote.dependency 'ShareKit/Core'
+#   onenote.dependency 'ISO8601DateFormatter'
+#   onenote.vendored_frameworks = 'Frameworks/LiveSDK.framework'
+#   onenote.resource = 'Frameworks/LiveSDK.framework'
+# end
 
-  s.subspec 'Open in 1Password' do |onepassword|
-    onepassword.source_files = 'Classes/ShareKit/Sharers/Actions/Add to 1Password/**/*.{h,m}'
-    onepassword.dependency 'ShareKit/Core'
-  end
+### these 3 actions were duplicated - they are included in ShareKit/Core already
+
+  #s.subspec 'ReadingList' do |readinglist|
+  #  readinglist.source_files = 'Classes/ShareKit/Sharers/Actions/Add to Safari Reading List/**/*.{h,m}'
+  #  readinglist.dependency 'ShareKit/Core'
+  #  readinglist.weak_frameworks    = 'SafariServices'
+  #end
+
+#s.subspec 'Open in Google Chrome' do |openinchrome|
+#   openinchrome.source_files = 'Classes/ShareKit/Sharers/Actions/Open in Chrome/**/*.{h,m}'
+#   openinchrome.dependency 'ShareKit/Core'
+# end
+
+# s.subspec 'Open in 1Password' do |onepassword|
+#   onepassword.source_files = 'Classes/ShareKit/Sharers/Actions/Open in 1Password/**/*.{h,m}'
+#   onepassword.dependency 'ShareKit/Core'
+# end
 
   s.subspec 'GooglePlus' do |googleplus|
     googleplus.source_files = 'Classes/ShareKit/Sharers/Services/Google Plus/**/*.{h,m}', 'Frameworks/GoogleOpenSource.framework/Versions/A/Headers/*.h'
     googleplus.vendored_frameworks = 'Frameworks/GooglePlus.framework', 'Frameworks/GoogleOpenSource.framework'
-    googleplus.resource = "Frameworks/GooglePlus.bundle"
+    googleplus.resource = 'Frameworks/GooglePlus.bundle'
     googleplus.framework = 'AssetsLibrary', 'CoreLocation', 'CoreMotion', 'CoreGraphics', 'CoreText', 'MediaPlayer', 'Security', 'SystemConfiguration', 'AddressBook'
     googleplus.dependency 'ShareKit/Core'
   end
